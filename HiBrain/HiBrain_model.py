@@ -89,7 +89,7 @@ class HPBN_ADNI(nn.Module):
     def __init__(
         self,
         node_in_dim=90,         # 每个节点特征维度（90×90 的一行）
-        dim_proto_node=90,      # 节点级原型维度，默认与节点维度相同 → 直接匹配 (满足你第2点)
+        dim_proto_node=90,      # 节点级原型维度，默认与节点维度相同 → 直接匹配 
         dim_proto_graph=90,     # 图级原型维度（这里设成同一维度方便）
         dim_cls=64,             # 类别原型空间维度
         num_node_proto=128,      # Level-1 节点原型数
@@ -106,7 +106,7 @@ class HPBN_ADNI(nn.Module):
         self.num_classes = num_classes
 
         # ---------- Level-1: Node-level prototypes ----------
-        # 直接用节点原始向量（90维）与节点原型（90维）做匹配（对应你第2点）
+        # 直接用节点原始向量（90维）与节点原型（90维）做匹配
         self.node_proto_layer = PrototypeLayer(num_node_proto, dim_proto_node)
 
         # ---------- Level-2: Graph-level prototypes ----------
@@ -122,7 +122,7 @@ class HPBN_ADNI(nn.Module):
         )
 
         # ---------- Level-3: Class-level prototypes ----------
-        # class-level 原型数量可以大于类别数（对应你第5点）
+        # class-level 原型数量可以大于类别数
         self.class_proto_layer = PrototypeLayer(num_class_proto, dim_cls)
 
         # ---------- Final classifier ----------
@@ -196,7 +196,7 @@ class HPBN_ADNI(nn.Module):
         C_proto_f, class_scores_f = self.class_proto_layer(E_C_f, hard=False)  # [B, dim_cls]
         C_proto_s, class_scores_s = self.class_proto_layer(E_C_s, hard=False)  # [B, dim_cls]
 
-        # ========== Final Fusion：三层原型 N_proto, G_proto, C_proto（对应你第6点） ==========
+        # ========== Final Fusion：三层原型 N_proto, G_proto, C_proto ==========
         G_proto = torch.cat([G_proto_f, G_proto_s], dim=-1)  # [B, 2*dim_proto_graph]
         C_proto = torch.cat([C_proto_f, C_proto_s], dim=-1)  # [B, 2*dim_cls]
 
