@@ -5,7 +5,7 @@ This is a PyTorch implementation of **HiBrain** as described in our paper:
 **HiBrain: Hierarchical Prototype Learning on Multimodal Brain Graphs for Stage-Aware Biomarker Discovery**
 
 <p align="center">
-  <img width="984" height="479" src="https://github.com/user-attachments/assets/c3e1d8e3-6784-467c-968c-c3bf081b58f2" />
+  <img width="4303" height="2012" alt="1" src="https://github.com/user-attachments/assets/e3133988-3a63-40ef-9488-54a8ef41b1aa" />
 </p>
 
 ## HiBrain Framework
